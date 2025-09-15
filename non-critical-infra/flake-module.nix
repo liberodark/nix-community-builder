@@ -32,19 +32,18 @@
         }
       ) (importConfig ./hosts);
 
-      colmena =
-        {
-          meta = {
-            nixpkgs = import inputs.nixpkgs { system = "x86_64-linux"; };
-            nodeNixpkgs = builtins.mapAttrs (_: v: v.pkgs) self.nixosConfigurations;
-            nodeSpecialArgs = builtins.mapAttrs (_: v: v._module.specialArgs) self.nixosConfigurations;
-            specialArgs.lib = lib;
-          };
-        }
-        // builtins.mapAttrs (_: v: {
-          deployment.tags = [ "non-critical-infra" ];
-          imports = v._module.args.modules;
-        }) self.nixosConfigurations;
+      colmena = {
+        meta = {
+          nixpkgs = import inputs.nixpkgs { system = "x86_64-linux"; };
+          nodeNixpkgs = builtins.mapAttrs (_: v: v.pkgs) self.nixosConfigurations;
+          nodeSpecialArgs = builtins.mapAttrs (_: v: v._module.specialArgs) self.nixosConfigurations;
+          specialArgs.lib = lib;
+        };
+      }
+      // builtins.mapAttrs (_: v: {
+        deployment.tags = [ "non-critical-infra" ];
+        imports = v._module.args.modules;
+      }) self.nixosConfigurations;
     };
 
   perSystem =
