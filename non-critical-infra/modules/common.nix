@@ -50,7 +50,7 @@
   environment.systemPackages = with pkgs; [
     htop
     btop
-    nvme-cli
+    nvme-rs
     qemu
   ];
 
