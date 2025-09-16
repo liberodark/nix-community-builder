@@ -47,7 +47,6 @@
       in
       {
         root.openssh.authorizedKeys.keys = [
-          sshGaetan
           sshLiberodark
         ];
 
