@@ -32,17 +32,21 @@
   };
 
   # Root Access
-  users.users.root.openssh.authorizedKeys.keys = [
-    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGQ5hBVVKK72ZX+n+BVnPocx+AG5u6ht8bM++G1lhufp liberodark@gmail.com"
-    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJfOUACs5oAn4Hyt6uMM5e/Xux0/5ODvSeg5zOy4MY1b gaetan@glepage.com"
-  ];
+  users = {
+    mutableUsers = false;
 
-  #users.users.nixos = {
-  #  isNormalUser = true;
-  #  description = "nixos";
-  #  extraGroups = [ "networkmanager" ];
-  #  hashedPassword = "REDACTED";
-  #};
+    users.root.openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGQ5hBVVKK72ZX+n+BVnPocx+AG5u6ht8bM++G1lhufp liberodark@gmail.com"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJfOUACs5oAn4Hyt6uMM5e/Xux0/5ODvSeg5zOy4MY1b gaetan@glepage.com"
+    ];
+
+    #users.nixos = {
+    #  isNormalUser = true;
+    #  description = "nixos";
+    #  extraGroups = [ "networkmanager" ];
+    #  hashedPassword = "REDACTED";
+    #};
+  };
 
   # Enable fstrim
   services.fstrim.enable = true;
