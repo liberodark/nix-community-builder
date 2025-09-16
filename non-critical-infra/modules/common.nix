@@ -24,7 +24,7 @@
     gc = {
       automatic = true;
       dates = "daily";
-      options = "--delete-older-than 1d";
+      options = "--delete-older-than 30d";
     };
     extraOptions = ''
       experimental-features = nix-command flakes
