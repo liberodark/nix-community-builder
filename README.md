@@ -4,12 +4,12 @@
 - **build01.ynh.ovh**
   - Architecture: x86_64-linux
   - Platform: Linux
-  - Availabilitys: Now
+  - Availabilitys: Disable
 
 - **build02.ynh.ovh**
   - Architecture: x86_64-linux
   - Platform: Linux
-  - Availabilitys: In Coming
+  - Availabilitys: Now
 
 ## Apple Silicon Builder
 - **build03.ynh.ovh**
