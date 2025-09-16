@@ -97,6 +97,7 @@
     btop
     nvme-rs
     qemu
+    git
     home-manager
   ];
 
