@@ -119,7 +119,11 @@
       ];
 
       PermitRootLogin = "yes";
-      AllowUsers = [ "root" ];
+      AllowUsers = [
+        "root"
+        "gaetan"
+        "liberodark"
+      ];
       PasswordAuthentication = false;
       KbdInteractiveAuthentication = false;
       UsePAM = true;
