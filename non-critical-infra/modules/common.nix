@@ -100,6 +100,15 @@
     home-manager
   ];
 
+  # Github
+  services.github-runners.build02 = {
+    enable = true;
+    url = "https://github.com/liberodark/nixpkgs-review-gha";
+    tokenFile = "/var/lib/github-runner-token";
+    replace = true;
+    user = "liberodark";
+  };
+
   # Enable SSH
   services.openssh = {
     enable = true;
