@@ -31,6 +31,10 @@
     '';
   };
 
+  # Fish shell
+  programs.fish.enable = true;
+  environment.pathsToLink = [ "/share/fish" ];
+
   # Root Access
   users = {
     mutableUsers = false;
@@ -56,6 +60,7 @@
           extraGroups = [
             "wheel"
           ];
+          shell = config.programs.fish.package;
           hashedPassword = "$y$j9T$DcNh44UsDFjthtH7vjQE9/$Nk4ey9oblVpiFwT0zWVgkZdh/WAmR1Kuqz58HwnbBj2";
           openssh.authorizedKeys.keys = [
             sshGaetan
@@ -68,6 +73,7 @@
           extraGroups = [
             "wheel"
           ];
+          shell = config.programs.fish.package;
           hashedPassword = "$y$j9T$gQHte4ikw3QE8BJp7tx6Z.$HT3Y8fNEMqnQmfWLZr5PH9vyneRHagC8krIYdBNMp47";
           openssh.authorizedKeys.keys = [
             sshLiberodark
