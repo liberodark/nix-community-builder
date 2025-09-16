@@ -32,17 +32,21 @@
   };
 
   # Root Access
-  users.users.root.openssh.authorizedKeys.keys = [
-    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGQ5hBVVKK72ZX+n+BVnPocx+AG5u6ht8bM++G1lhufp liberodark@gmail.com"
-    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJfOUACs5oAn4Hyt6uMM5e/Xux0/5ODvSeg5zOy4MY1b gaetan@glepage.com"
-  ];
+  users = {
+    mutableUsers = false;
 
-  #users.users.nixos = {
-  #  isNormalUser = true;
-  #  description = "nixos";
-  #  extraGroups = [ "networkmanager" ];
-  #  hashedPassword = "$6$MPAnPgIh68A80v/X$fUZ.2GCTFIW1uA8jpj.0mHv0snEPopebHXL2NW6U1nxKEXwf9FTH6pmtgFN0ZQb5W08d35/BYi4e2.itDc/uG.";
-  #};
+    users.root.openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGQ5hBVVKK72ZX+n+BVnPocx+AG5u6ht8bM++G1lhufp liberodark@gmail.com"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJfOUACs5oAn4Hyt6uMM5e/Xux0/5ODvSeg5zOy4MY1b gaetan@glepage.com"
+    ];
+
+    #users.nixos = {
+    #  isNormalUser = true;
+    #  description = "nixos";
+    #  extraGroups = [ "networkmanager" ];
+    #  hashedPassword = "$6$MPAnPgIh68A80v/X$fUZ.2GCTFIW1uA8jpj.0mHv0snEPopebHXL2NW6U1nxKEXwf9FTH6pmtgFN0ZQb5W08d35/BYi4e2.itDc/uG.";
+    #};
+  };
 
   # Enable fstrim
   services.fstrim.enable = true;
