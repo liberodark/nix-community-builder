@@ -87,6 +87,7 @@
     btop
     nvme-rs
     qemu
+    home-manager
   ];
 
   # Enable SSH
