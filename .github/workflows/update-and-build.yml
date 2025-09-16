@@ -1,0 +1,34 @@
+name: update-builders
+on:
+  schedule:
+    - cron: "0 0 * * *"
+  push:
+    branches: [main]
+    paths:
+      - "flake.nix"
+      - "flake.lock"
+      - "non-critical-infra/**"
+
+jobs:
+  update:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Update flake
+        run: nix flake update
+
+      - name: Format Nix files with nixfmt-tree
+        run: nix run nixpkgs#nixfmt-tree -- .
+
+      - name: Check configurations
+        run: |
+          nix flake check
+          colmena build --on @builder
+
+      - uses: EndBug/add-and-commit@v9
+        with:
+          add: |
+            flake.lock
+            **/*.nix
+          message: "chore: Update flake.lock and format nix files"
