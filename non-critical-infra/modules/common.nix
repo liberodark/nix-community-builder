@@ -136,12 +136,15 @@
     # Gaetan
     gaetan-config = {
       enable = true;
+      url = "https://github.com/GaetanLepage/nix-config";
       tokenFile = "/var/lib/github-runner-tokens/gaetan-config";
       replace = true;
       user = "gaetan";
     };
+
     gaetan-lk = {
       enable = true;
+      url = "https://github.com/LepageKnives";
       tokenFile = "/var/lib/github-runner-tokens/gaetan-lk";
       replace = true;
       user = "gaetan";
