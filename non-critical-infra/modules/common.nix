@@ -110,6 +110,11 @@
     (lib.hiPrio uutils-coreutils-noprefix)
     home-manager
   ];
+  programs.neovim = {
+    enable = true;
+    viAlias = true;
+    vimAlias = true;
+  };
 
   # Enable Github Runner
   services.github-runners = {
