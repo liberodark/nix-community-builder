@@ -46,6 +46,10 @@
   environment.pathsToLink = [ "/share/fish" ];
 
   # Root Access
+  security.sudo = {
+    enable = true;
+    wheelNeedsPassword = false;
+  };
   users = {
     mutableUsers = false;
 
