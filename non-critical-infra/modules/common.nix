@@ -111,13 +111,14 @@
     home-manager
   ];
 
-  # Github
+  # Enable Github Runner
   services.github-runners.build02 = {
     enable = true;
     url = "https://github.com/liberodark/nixpkgs-review-gha";
     tokenFile = "/var/lib/github-runner-token";
     replace = true;
     user = "liberodark";
+
     extraPackages = with pkgs; [
       git
       nixpkgs-review
@@ -125,6 +126,10 @@
       gnused
       coreutils
     ];
+
+    extraEnvironment = {
+      NIX_CONFIG = "experimental-features = nix-command flakes";
+    };
   };
 
   # Enable sudo-rs
