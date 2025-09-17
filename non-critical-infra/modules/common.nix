@@ -142,6 +142,14 @@
       user = "gaetan";
     };
 
+    gaetan-npr-gha = {
+      enable = true;
+      url = "https://github.com/GaetanLepage/nixpkgs-review-gha";
+      tokenFile = "/var/lib/github-runner-tokens/gaetan-npr-gha";
+      replace = true;
+      user = "gaetan";
+    };
+
     gaetan-lk = {
       enable = true;
       url = "https://github.com/LepageKnives";
