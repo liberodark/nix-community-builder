@@ -107,8 +107,7 @@
     btop
     nvme-rs
     qemu
-    lsb-release
-    git
+    (lib.hiPrio uutils-coreutils-noprefix)
     home-manager
   ];
 
@@ -119,6 +118,21 @@
     tokenFile = "/var/lib/github-runner-token";
     replace = true;
     user = "liberodark";
+    extraPackages = with pkgs; [
+      git
+      nixpkgs-review
+      jq
+      gnused
+      coreutils
+    ];
+  };
+
+  # Enable sudo-rs
+  security.sudo-rs = {
+    enable = true;
+    package = pkgs.sudo-rs;
+    execWheelOnly = false;
+    wheelNeedsPassword = false;
   };
 
   # Enable SSH
