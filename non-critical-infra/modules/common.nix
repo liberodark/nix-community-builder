@@ -116,7 +116,7 @@
     build02 = {
       enable = true;
       url = "https://github.com/liberodark/nixpkgs-review-gha";
-      tokenFile = "/var/lib/github-runner-token";
+      tokenFile = "/var/lib/github-runner-tokens/liberodark-npr-gha";
       replace = true;
       user = "liberodark";
 
