@@ -107,6 +107,7 @@
     btop
     nvme-rs
     qemu
+    lsb-release
     git
     home-manager
   ];
