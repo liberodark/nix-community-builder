@@ -1,10 +1,17 @@
 { ... }:
 
 {
-  imports = [
-    ../../modules/common.nix
-    ./hardware.nix
-  ];
+  imports = [ ./hardware.nix ]
+    ++ map (f: ../../modules + "/${f}")
+      (builtins.filter
+        (path: builtins.match ".*\\.nix" path != null)
+        (builtins.attrNames (builtins.readDir ./modules))
+      )
+    ++ map (f: ../../extras + "/${f}")
+      (builtins.filter
+        (path: builtins.match ".*\\.nix" path != null)
+        (builtins.attrNames (builtins.readDir ./extras))
+      );
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
