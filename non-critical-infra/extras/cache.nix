@@ -1,13 +1,21 @@
-{ pkgs, ... }:
-
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 let
+  # Enable
+  enabledHosts = [ "build02" ];
+  shouldEnable = lib.elem config.networking.hostName enabledHosts;
+  # Config
   keyDir = "/var/lib/secrets";
   secretKeyPath = "${keyDir}/harmonia.secret";
   publicKeyPath = "${keyDir}/harmonia.public";
   keyName = "nix-cache.ynh.ovh";
 in
 {
-  systemd.services.harmonia-key-gen = {
+  systemd.services.harmonia-key-gen = lib.mkIf shouldEnable {
     description = "Generate Harmonia signing keys if needed";
     wantedBy = [ "harmonia.service" ];
     before = [ "harmonia.service" ];
@@ -29,7 +37,7 @@ in
     '';
   };
 
-  services.harmonia = {
+  services.harmonia = lib.mkIf shouldEnable {
     enable = true;
     signKeyPaths = [ "${secretKeyPath}" ];
   };
