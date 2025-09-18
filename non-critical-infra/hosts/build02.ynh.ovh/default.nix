@@ -5,12 +5,12 @@
     ++ map (f: ../../modules + "/${f}")
       (builtins.filter
         (path: builtins.match ".*\\.nix" path != null)
-        (builtins.attrNames (builtins.readDir ./modules))
+        (builtins.attrNames (builtins.readDir ../../modules))
       )
     ++ map (f: ../../extras + "/${f}")
       (builtins.filter
         (path: builtins.match ".*\\.nix" path != null)
-        (builtins.attrNames (builtins.readDir ./extras))
+        (builtins.attrNames (builtins.readDir ../../extras))
       );
 
   # Bootloader.
