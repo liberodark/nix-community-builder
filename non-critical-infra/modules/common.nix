@@ -110,6 +110,11 @@
     (lib.hiPrio uutils-coreutils-noprefix)
     home-manager
   ];
+  programs.neovim = {
+    enable = true;
+    viAlias = true;
+    vimAlias = true;
+  };
 
   # Enable Github Runner
   services.github-runners = {
@@ -138,6 +143,14 @@
       enable = true;
       url = "https://github.com/GaetanLepage/nix-config";
       tokenFile = "/var/lib/github-runner-tokens/gaetan-config";
+      replace = true;
+      user = "gaetan";
+    };
+
+    gaetan-npr-gha = {
+      enable = true;
+      url = "https://github.com/GaetanLepage/nixpkgs-review-gha";
+      tokenFile = "/var/lib/github-runner-tokens/gaetan-npr-gha";
       replace = true;
       user = "gaetan";
     };
