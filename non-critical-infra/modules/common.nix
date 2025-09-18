@@ -110,6 +110,7 @@
     (lib.hiPrio uutils-coreutils-noprefix)
     home-manager
   ];
+
   programs.neovim = {
     enable = true;
     viAlias = true;
@@ -118,7 +119,7 @@
 
   # Enable Github Runner
   services.github-runners = {
-    build02 = {
+    liberodark-npr-gha = {
       enable = true;
       url = "https://github.com/liberodark/nixpkgs-review-gha";
       tokenFile = "/var/lib/github-runner-tokens/liberodark-npr-gha";
