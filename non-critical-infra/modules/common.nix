@@ -15,6 +15,7 @@
       trusted-users = [
         "root"
         "@wheel"
+        "nix"
       ];
       auto-optimise-store = true;
       builders-use-substitutes = true;
