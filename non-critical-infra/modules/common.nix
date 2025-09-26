@@ -93,6 +93,7 @@
         "root"
         "gaetan"
         "liberodark"
+        "nix"
       ];
       PasswordAuthentication = false;
       KbdInteractiveAuthentication = false;
