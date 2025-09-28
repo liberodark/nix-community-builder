@@ -12,8 +12,8 @@ in
   zramSwap = lib.mkIf shouldEnable {
     enable = true;
     algorithm = "zstd";
-    memoryMax = 128 * 1024 * 1024 * 1024;
-    memoryPercent = 100;
+    memoryMax = 256 * 1024 * 1024 * 1024;
+    memoryPercent = 205;
     priority = 5;
   };
 
