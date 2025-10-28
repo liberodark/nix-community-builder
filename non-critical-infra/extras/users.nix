@@ -51,7 +51,6 @@
           group = "nix";
           hashedPassword = "$y$j9T$qSCWsp8ENdqyQRtWMUh1b0$Pqa4Er3BFIJpgdqXq7V2QnQNZEFErgb0uytctBkz6h4";
           openssh.authorizedKeys.keys = [
-            "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDi1X4YCtWEto02ovI/fsond7hMKPZ0cFYMLkGn9rGtu"
           ];
         };
       };
