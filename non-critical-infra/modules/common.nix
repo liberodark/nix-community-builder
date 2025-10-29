@@ -78,6 +78,8 @@
         "aes128-ctr"
       ];
       KexAlgorithms = [
+        "mlkem768x25519-sha256"
+        "sntrup761x25519-sha512"
         "ecdh-sha2-nistp384"
         "ecdh-sha2-nistp256"
         "diffie-hellman-group16-sha512"
