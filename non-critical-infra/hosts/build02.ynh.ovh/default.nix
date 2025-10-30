@@ -1,4 +1,4 @@
-{ ... }:
+{ lib, ... }:
 
 {
   imports = [ ./hardware.nix ]
@@ -15,6 +15,8 @@
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
+
+  nix.gc.enable = lib.mkForce false;
 
   deployment.targetHost = "91.224.148.57";
 
