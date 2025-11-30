@@ -12,6 +12,11 @@
         (lib.mapAttrs (name: _value: import (path + "/${name}/default.nix")) (
           lib.filterAttrs (_: v: v == "directory") (builtins.readDir path)
         ));
+
+      allHosts = importConfig ./hosts;
+      darwinHostNames = [ "build03.ynh.ovh" ];
+      darwinHosts = lib.filterAttrs (name: _: lib.elem name darwinHostNames) allHosts;
+      nixosHosts = lib.filterAttrs (name: _: !(lib.elem name darwinHostNames)) allHosts;
     in
     {
       nixosConfigurations = builtins.mapAttrs (
@@ -28,9 +33,29 @@
             inputs.sops-nix.nixosModules.sops
           ];
           extraModules = [ inputs.colmena.nixosModules.deploymentOptions ];
-
         }
-      ) (importConfig ./hosts);
+      ) nixosHosts;
+
+      darwinConfigurations =
+        let
+          configs = builtins.mapAttrs (
+            name: value:
+            inputs.nix-darwin.lib.darwinSystem {
+              system = "aarch64-darwin";
+              specialArgs = {
+                inherit inputs;
+              };
+              modules = [
+                value
+              ];
+            }
+          ) darwinHosts;
+          # Alias: build03.ynh.ovh -> build03
+          aliases = lib.mapAttrs' (
+            name: value: lib.nameValuePair (builtins.head (lib.splitString "." name)) value
+          ) configs;
+        in
+        configs // aliases;
 
       colmena = {
         meta = {
@@ -48,7 +73,6 @@
 
   perSystem =
     { inputs', ... }:
-    # Use the latest packages from `nixpkgs-unstable` for dev tools.
     let
       pkgs = inputs'.nixpkgs-unstable.legacyPackages;
     in

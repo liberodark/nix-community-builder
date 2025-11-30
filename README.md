@@ -16,7 +16,7 @@
   - Architecture: aarch64-darwin
   - Platform: macOS
   - Processeur: Apple M4
-  - Availability: _incoming_
+  - Availability: now
 
 ## ARM Builder
 - **build04.ynh.ovh**
