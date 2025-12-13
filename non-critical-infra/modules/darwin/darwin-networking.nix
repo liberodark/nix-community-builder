@@ -247,16 +247,20 @@ let
           mkIPv4Route =
             route:
             lib.optionalString route.GatewayOnLink ''
+            if ! netstat -rn | grep -q "^default.*${route.Gateway}"; then
               route delete default 2>/dev/null || true
               route add -host ${route.Gateway} -interface "$NETWORK_INTERFACE"
               route add default ${route.Gateway}
+            fi
             '';
           mkIPv6Route =
             route:
             lib.optionalString route.GatewayOnLink ''
+            if ! netstat -rn | grep -q "^default.*${route.Gateway}"; then
               route delete -inet6 default 2>/dev/null || true
               route add -inet6 -host ${route.Gateway} -interface "$NETWORK_INTERFACE"
               route add -inet6 default ${route.Gateway}
+            fi
             '';
         in
         lib.concatMapStrings mkIPv4Route ipv4Routes + lib.concatMapStrings mkIPv6Route ipv6Routes;
