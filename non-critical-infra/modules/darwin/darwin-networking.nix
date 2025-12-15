@@ -355,7 +355,6 @@ in
   };
 
   config = lib.mkIf (enabledNetworks != { }) {
-    system.defaults.alf.globalstate = lib.mkDefault 0;
 
     system.activationScripts.postActivation.text = lib.mkBefore ''
       launchctl disable system/netbiosd 2>/dev/null || true
