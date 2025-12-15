@@ -8,6 +8,8 @@
         "@admin"
       ];
       builders-use-substitutes = true;
+      extra-platforms = [ "x86_64-darwin" ];
+      experimental-features = "nix-command flakes";
       substituters = [
         "https://cache.nixos.org"
         "https://nix-community.cachix.org"
@@ -27,10 +29,6 @@
       };
       options = "--delete-older-than 30d";
     };
-
-    extraOptions = ''
-      experimental-features = nix-command flakes
-    '';
   };
 
   # Fish shell
