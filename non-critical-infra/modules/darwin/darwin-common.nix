@@ -31,6 +31,9 @@
     extraOptions = ''
       experimental-features = nix-command flakes
     '';
+    nix.settings = {
+      extra-platforms = [ "x86_64-darwin" ];
+    };
   };
 
   # Fish shell
