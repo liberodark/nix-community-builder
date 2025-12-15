@@ -28,11 +28,9 @@
       options = "--delete-older-than 30d";
     };
 
-    extraOptions = ''
-      experimental-features = nix-command flakes
-    '';
     nix.settings = {
       extra-platforms = [ "x86_64-darwin" ];
+      experimental-features = "nix-command flakes";
     };
   };
 
