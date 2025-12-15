@@ -3,7 +3,7 @@
 
 #Update
 nixos-rebuild switch \
-  --fast \
-  --flake github:liberodark/nix-community-builder/9af2fa0#build02.ynh.ovh \
+  --no-reexec \
+  --flake github:liberodark/nix-community-builder/45e7824#build02.ynh.ovh \
   --target-host root@build02.ynh.ovh \
   --build-host root@build02.ynh.ovh
