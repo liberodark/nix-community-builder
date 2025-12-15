@@ -20,6 +20,11 @@
     domain = "ynh.ovh";
   };
 
+  nix.settings = {
+    cores = 4;
+    max-jobs = 6;
+  };
+
   darwin.network.networks."10-uplink" = {
     enable = true;
     matchConfig.MACAddress = "d0:11:e5:04:5a:e3";
