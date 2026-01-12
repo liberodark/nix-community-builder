@@ -53,6 +53,7 @@
   environment.systemPackages = with pkgs; [
     htop
     btop
+    nix-output-monitor
     nvme-rs
     qemu
     (lib.hiPrio uutils-coreutils-noprefix)
