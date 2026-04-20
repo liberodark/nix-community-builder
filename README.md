@@ -15,18 +15,19 @@
 - **build03.ynh.ovh**
   - Architecture: aarch64-darwin
   - Platform: macOS
-  - Processeur: Apple M4
+  - Processor: Apple M4
   - Availability: now
 
 ## ARM Builder
 - **build04.ynh.ovh**
   - Architecture: aarch64-linux
   - Platform: Linux
+  - Processor: CP8180
   - Availability: _incoming_
 
 ## RISC-V Builder
 - **build05.ynh.ovh**
   - Architecture: riscv64-linux
   - Platform: Linux
-  - Processeur: JH7110
+  - Processor: JH7110
   - Availability: _incoming_
