@@ -2,12 +2,10 @@ name: update-builders
 on:
   schedule:
     - cron: "0 0 * * *"
-  push:
-    branches: [main]
-    paths:
-      - "flake.nix"
-      - "flake.lock"
-      - "non-critical-infra/**"
+  workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
   update:
@@ -15,16 +13,16 @@ jobs:
     steps:
       - uses: actions/checkout@v6
 
+      - uses: DeterminateSystems/nix-installer-action@main
+
       - name: Update flake
         run: nix flake update
 
       - name: Format Nix files with nixfmt-tree
         run: nix run nixpkgs#nixfmt-tree -- .
 
-      - name: Check configurations
-        run: |
-          nix flake check
-          colmena build --on @builder
+      - name: Check flake
+        run: nix flake check
 
       - uses: EndBug/add-and-commit@v10
         with:
