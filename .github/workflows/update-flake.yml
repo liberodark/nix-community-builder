@@ -1,4 +1,4 @@
-name: update-builders
+name: update-flake
 on:
   schedule:
     - cron: "0 0 * * *"
