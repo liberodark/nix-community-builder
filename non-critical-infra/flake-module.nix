@@ -14,16 +14,30 @@
         ));
 
       allHosts = importConfig ./hosts;
+      aarch64HostNames = [ "build04.ynh.ovh" ];
       darwinHostNames = [ "build03.ynh.ovh" ];
+      loongarch64HostNames = [ "build06.ynh.ovh" ];
+      riscv64HostNames = [ "build05.ynh.ovh" ];
       darwinHosts = lib.filterAttrs (name: _: lib.elem name darwinHostNames) allHosts;
       nixosHosts = lib.filterAttrs (name: _: !(lib.elem name darwinHostNames)) allHosts;
+
+      systemFor =
+        name:
+        if lib.elem name aarch64HostNames then
+          "aarch64-linux"
+        else if lib.elem name loongarch64HostNames then
+          "loongarch64-linux"
+        else if lib.elem name riscv64HostNames then
+          "riscv64-linux"
+        else
+          "x86_64-linux";
     in
     {
       nixosConfigurations = builtins.mapAttrs (
-        _name: value:
+        name: value:
         inputs.nixpkgs.lib.nixosSystem {
           inherit lib;
-          system = "x86_64-linux";
+          system = systemFor name;
           specialArgs = {
             inherit inputs;
           };
