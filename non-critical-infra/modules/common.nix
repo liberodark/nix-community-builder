@@ -128,7 +128,11 @@
   # Enable Firewall
   networking.firewall = {
     enable = true;
-    allowedTCPPorts = [ 22 4000 4001 ];
+    allowedTCPPorts = [
+      22
+      4000
+      4001
+    ];
   };
 
   deployment.tags = [ "builder" ];
