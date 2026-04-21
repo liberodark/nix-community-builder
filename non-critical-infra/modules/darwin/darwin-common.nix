@@ -3,6 +3,7 @@
 {
   nix = {
     settings = {
+      sandbox = true;
       trusted-users = [
         "root"
         "@admin"
