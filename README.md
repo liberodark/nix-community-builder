@@ -23,7 +23,7 @@
   - Architecture: aarch64-linux
   - Platform: Linux
   - Processor: CP8180
-  - Availability: _incoming_
+  - Availability: now
 
 ## RISC-V Builder
 - **build05.ynh.ovh**
