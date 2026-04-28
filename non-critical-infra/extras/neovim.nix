@@ -5,7 +5,7 @@
   ...
 }:
 let
-  enabledHosts = [ "build02" ];
+  enabledHosts = [ "build02" "build04" ];
   shouldEnable = lib.elem config.networking.hostName enabledHosts;
   usersWithNeovim = [
     "gaetan"
