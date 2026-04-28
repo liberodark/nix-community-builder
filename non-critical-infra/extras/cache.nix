@@ -6,13 +6,13 @@
 }:
 let
   # Enable
-  enabledHosts = [ "build02" ];
+  enabledHosts = [ "build02" "build04" ];
   shouldEnable = lib.elem config.networking.hostName enabledHosts;
   # Config
   keyDir = "/var/lib/secrets";
   secretKeyPath = "${keyDir}/harmonia.secret";
   publicKeyPath = "${keyDir}/harmonia.public";
-  keyName = "nix-cache.ynh.ovh";
+  keyName = config.networking.fqdnOrHostName;
 in
 {
   systemd.services.harmonia-key-gen = lib.mkIf shouldEnable {
