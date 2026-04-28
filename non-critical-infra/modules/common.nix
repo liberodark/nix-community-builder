@@ -1,11 +1,12 @@
 {
+  lib,
   pkgs,
   ...
 }:
 
 {
   # Global Options
-  boot.binfmt.emulatedSystems = [
+  boot.binfmt.emulatedSystems = lib.filter (s: s != pkgs.stdenv.hostPlatform.system) [
     "aarch64-linux"
     "riscv64-linux"
   ];
