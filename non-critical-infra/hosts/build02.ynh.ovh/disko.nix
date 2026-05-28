@@ -51,7 +51,7 @@
       options = {
         # smartctl --all /dev/nvme0n1
         # Logical block size:   512 bytes
-        ashift = "9";
+        ashift = "12";
       };
       rootFsOptions = {
         acltype = "posixacl";

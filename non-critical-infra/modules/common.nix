@@ -6,10 +6,12 @@
 
 {
   # Global Options
-  boot.binfmt.emulatedSystems = lib.filter (s: s != pkgs.stdenv.hostPlatform.system) [
-    "aarch64-linux"
-    "riscv64-linux"
-  ];
+  boot.binfmt.emulatedSystems = lib.optionals (!pkgs.stdenv.hostPlatform.isRiscV64) (
+    lib.filter (s: s != pkgs.stdenv.hostPlatform.system) [
+      "aarch64-linux"
+      "riscv64-linux"
+    ]
+  );
 
   nix = {
     settings = {
@@ -53,15 +55,21 @@
   # Enable fstrim
   services.fstrim.enable = true;
 
-  environment.systemPackages = with pkgs; [
-    htop
-    btop
-    nix-output-monitor
-    nvme-rs
-    qemu
-    (lib.hiPrio uutils-coreutils-noprefix)
-    home-manager
-  ];
+  environment.systemPackages =
+    (with pkgs; [
+      htop
+      btop
+      nvme-rs
+      (lib.hiPrio uutils-coreutils-noprefix)
+      home-manager
+    ])
+    ++ lib.optionals (!pkgs.stdenv.hostPlatform.isRiscV64) (
+      with pkgs;
+      [
+        nix-output-monitor
+        qemu
+      ]
+    );
 
   # Enable sudo-rs
   security.sudo-rs = {
