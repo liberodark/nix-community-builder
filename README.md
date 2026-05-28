@@ -29,5 +29,5 @@
 - **build05.ynh.ovh**
   - Architecture: riscv64-linux
   - Platform: Linux
-  - Processor: JH7110
+  - Processor: K3
   - Availability: _incoming_

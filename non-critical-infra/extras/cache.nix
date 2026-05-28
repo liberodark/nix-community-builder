@@ -40,7 +40,7 @@ in
     '';
   };
 
-  services.harmonia = lib.mkIf shouldEnable {
+  services.harmonia.cache = lib.mkIf shouldEnable {
     enable = true;
     signKeyPaths = [ "${secretKeyPath}" ];
   };
