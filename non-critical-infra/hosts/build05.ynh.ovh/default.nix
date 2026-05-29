@@ -47,36 +47,13 @@
     };
   };
 
-  # Remove after merge in 26.05 https://nixtracker.ynh.ovh/pr/523685
+  # Workaround for ffmpeg-headless
   nixpkgs.overlays = [
-    (
-      final: prev:
-      let
-        pythonOverride =
-          py:
-          py.override (old: {
-            packageOverrides =
-              pyfinal: pyprev:
-              (old.packageOverrides or (_: _: { })) pyfinal pyprev
-              // {
-                numpy = pyprev.numpy.overridePythonAttrs (
-                  oldAttrs:
-                  lib.optionalAttrs final.stdenv.hostPlatform.isRiscV64 {
-                    doCheck = false;
-                    doInstallCheck = false;
-                  }
-                );
-              };
-          });
-      in
-      {
-        python3 = pythonOverride prev.python3;
-        python310 = pythonOverride prev.python310;
-        python311 = pythonOverride prev.python311;
-        python312 = pythonOverride prev.python312;
-        python313 = pythonOverride prev.python313;
-      }
-    )
+    (final: prev: {
+      ffmpeg-headless = prev.ffmpeg-headless.overrideAttrs (_: {
+        doCheck = false;
+      });
+    })
   ];
 
   deployment.targetHost = "91.224.148.99";
