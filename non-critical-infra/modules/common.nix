@@ -6,6 +6,8 @@
 
 {
   # Global Options
+  boot.zfs.forceImportRoot = false;
+
   boot.binfmt.emulatedSystems = lib.optionals (!pkgs.stdenv.hostPlatform.isRiscV64) (
     lib.filter (s: s != pkgs.stdenv.hostPlatform.system) [
       "aarch64-linux"
