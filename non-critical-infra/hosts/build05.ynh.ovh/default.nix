@@ -48,6 +48,7 @@
   };
 
   # Workaround for ffmpeg-headless
+  # Remove after merge https://nixtracker.ynh.ovh/pr/525606
   nixpkgs.overlays = [
     (final: prev: {
       ffmpeg-headless = prev.ffmpeg-headless.overrideAttrs (_: {
