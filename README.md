@@ -30,4 +30,4 @@
   - Architecture: riscv64-linux
   - Platform: Linux
   - Processor: K3
-  - Availability: _incoming_
+  - Availability: now
