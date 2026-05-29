@@ -32,7 +32,7 @@
 
   systemd.network.networks."10-uplink" = {
     enable = true;
-    matchConfig.MACAddress = "44:a9:2c:50:04:f7";
+    matchConfig.MACAddress = "38:05:25:33:e3:ab";
     address = [
       "91.224.148.106/32"
     ];
