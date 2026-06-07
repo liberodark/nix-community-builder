@@ -5,7 +5,10 @@
   ...
 }:
 let
-  enabledHosts = [ "build02" "build05" ];
+  enabledHosts = [
+    "build02"
+    "build05"
+  ];
   shouldEnable = lib.elem config.networking.hostName enabledHosts;
 in
 {
