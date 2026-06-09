@@ -25,6 +25,11 @@
     max-jobs = 6;
   };
 
+  nix.gc = {
+    dates = "daily";
+    options = "--delete-older-than 2d";
+  };
+
   darwin.network.networks."10-uplink" = {
     enable = true;
     matchConfig.MACAddress = "d0:11:e5:04:5a:e3";
