@@ -47,6 +47,8 @@
     };
   };
 
+  nix.gc.options = lib.mkForce "--delete-older-than 180d";
+
   # Workaround for ffmpeg-headless
   # Remove after merge https://nixtracker.ynh.ovh/pr/525606
   nixpkgs.overlays = [
