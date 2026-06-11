@@ -29,29 +29,16 @@
     }
   ];
 
-  systemd.services.spacemit-hmp-permissive = {
-    description = "SpacemiT HMP permissive";
-    wantedBy = [ "sysinit.target" ];
-    before = [ "sysinit.target" ];
-    after = [ "systemd-modules-load.service" ];
-    unitConfig.DefaultDependencies = false;
-    serviceConfig = {
-      Type = "oneshot";
-      RemainAfterExit = true;
-      ExecStart = pkgs.writeShellScript "hmp-permissive" ''
-        echo permissive > /sys/kernel/spacemit_hmp/mode
-        for pid in /proc/[0-9]*; do
-          ${pkgs.util-linux}/bin/taskset -apc 0-15 "$(basename "$pid")" 2>/dev/null || true
-        done
-      '';
-    };
+  hardware.spacemit.hmp = {
+    enable = true;
+    mode = "permissive";
   };
 
   nix.gc.options = lib.mkForce "--delete-older-than 180d";
 
-  # Workaround for ffmpeg-headless
-  # Remove after merge https://nixtracker.ynh.ovh/pr/525606
   nixpkgs.overlays = [
+    # Workaround for ffmpeg-headless
+    # Remove after merge https://nixtracker.ynh.ovh/pr/525606
     (final: prev: {
       ffmpeg-headless = prev.ffmpeg-headless.overrideAttrs (_: {
         doCheck = false;
