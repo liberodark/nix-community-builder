@@ -26,7 +26,10 @@
   };
 
   nix.gc = lib.mkForce {
-    interval = { Hour = 2; Minute = 0; };
+    interval = {
+      Hour = 2;
+      Minute = 0;
+    };
     options = "--delete-older-than 2d";
   };
 
