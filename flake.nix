@@ -4,6 +4,7 @@
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     nix-darwin.url = "github:nix-darwin/nix-darwin/nix-darwin-26.05";
     nixos-hardware.url = "github:liberodark/nixos-hardware/544285f1bd8f51dfdbccfaaf70f31995492f2904";
+    nixpkgs-gcc153.url = "github:liberodark/nixpkgs/gcc153";
     # Why?
     flake-parts.url = "github:hercules-ci/flake-parts";
     flake-parts.inputs.nixpkgs-lib.follows = "nixpkgs";
