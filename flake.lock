@@ -710,6 +710,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-gcc153": {
+      "locked": {
+        "lastModified": 1781552556,
+        "narHash": "sha256-0+SE5rt+Aya0Rw6x4LsMY9nppgC/Ooznc7iisa2RuSk=",
+        "owner": "liberodark",
+        "repo": "nixpkgs",
+        "rev": "5f0af534b9f108520fc83c7fcc98950e0b69d0b5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "liberodark",
+        "ref": "gcc153",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs-swh": {
       "inputs": {
         "nixpkgs": [
@@ -832,6 +848,7 @@
         "nix-darwin": "nix-darwin",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_2",
+        "nixpkgs-gcc153": "nixpkgs-gcc153",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "sops-nix": "sops-nix_2",
         "srvos": "srvos_2"

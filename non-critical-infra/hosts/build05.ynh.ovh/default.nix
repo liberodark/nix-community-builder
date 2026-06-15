@@ -1,4 +1,10 @@
-{ lib, pkgs, ... }:
+{
+  lib,
+  pkgs,
+  inputs,
+  config,
+  ...
+}:
 
 {
   imports = [
@@ -21,16 +27,15 @@
     configurationLimit = 3;
   };
 
-  boot.kernelPatches = [
-    {
-      name = "disable-btf-riscv";
-      patch = null;
-      structuredExtraConfig = with lib.kernel; {
-        DEBUG_INFO_BTF = lib.mkForce no;
-        DEBUG_INFO_BTF_MODULES = lib.mkForce no;
-      };
-    }
-  ];
+  boot.kernelPackages = lib.mkForce (
+    pkgs.linuxPackagesFor (
+      pkgs.callPackage "${inputs.nixos-hardware}/spacemit/k3-pico-itx/linux.nix" {
+        inherit (config.boot) kernelPatches;
+        stdenv = pkgs.overrideCC pkgs.stdenv
+          inputs.nixpkgs-gcc153.legacyPackages.riscv64-linux.gcc15;
+      }
+    )
+  );
 
   hardware.spacemit.hmp = {
     enable = true;
