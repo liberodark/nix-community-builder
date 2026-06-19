@@ -1,6 +1,7 @@
 {
   lib,
   pkgs,
+  inputs,
   ...
 }:
 
@@ -57,21 +58,15 @@
   # Enable fstrim
   services.fstrim.enable = true;
 
-  environment.systemPackages =
-    (with pkgs; [
-      htop
-      btop
-      nvme-rs
-      (lib.hiPrio uutils-coreutils-noprefix)
-      home-manager
-    ])
-    ++ lib.optionals (!pkgs.stdenv.hostPlatform.isRiscV64) (
-      with pkgs;
-      [
-        nix-output-monitor
-        qemu
-      ]
-    );
+  environment.systemPackages = with pkgs; [
+    htop
+    btop
+    nvme-rs
+    (lib.hiPrio uutils-coreutils-noprefix)
+    home-manager
+    #qemu
+    inputs.nom-rs.packages.${pkgs.stdenv.hostPlatform.system}.default
+  ];
 
   # Enable sudo-rs
   security.sudo-rs = {
