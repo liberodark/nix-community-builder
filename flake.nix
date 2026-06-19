@@ -36,6 +36,10 @@
         nixpkgs-unstable.follows = "nixpkgs-unstable";
       };
     };
+    nom-rs = {
+      url = "github:liberodark/nom-rs";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
