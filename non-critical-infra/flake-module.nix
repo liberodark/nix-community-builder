@@ -16,8 +16,12 @@
       allHosts = importConfig ./hosts;
       aarch64HostNames = [ "build04.ynh.ovh" ];
       darwinHostNames = [ "build03.ynh.ovh" ];
-      loongarch64HostNames = [ "build06.ynh.ovh" ];
-      riscv64HostNames = [ "build05.ynh.ovh" ];
+      loongarch64HostNames = [ ];
+      riscv64HostNames = [
+        "build05.ynh.ovh"
+        "build06.ynh.ovh"
+        "build07.ynh.ovh"
+      ];
       darwinHosts = lib.filterAttrs (name: _: lib.elem name darwinHostNames) allHosts;
       nixosHosts = lib.filterAttrs (name: _: !(lib.elem name darwinHostNames)) allHosts;
 
