@@ -34,7 +34,7 @@
 
   hardware.spacemit.hmp = {
     enable = true;
-    mode = "permissive";
+    mode = "strict";
   };
 
   nix.gc.options = lib.mkForce "--delete-older-than 180d";

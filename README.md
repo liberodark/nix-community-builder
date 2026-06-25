@@ -37,3 +37,9 @@
   - Platform: Linux
   - Processor: K3
   - Availability: now
+
+- **build07.ynh.ovh**
+  - Architecture: riscv64-linux
+  - Platform: Linux
+  - Processor: K3
+  - Availability: now

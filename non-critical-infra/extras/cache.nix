@@ -11,6 +11,7 @@ let
     "build04"
     "build05"
     "build06"
+    "build07"
   ];
   shouldEnable = lib.elem config.networking.hostName enabledHosts;
   # Config
