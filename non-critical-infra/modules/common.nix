@@ -53,6 +53,10 @@ in
       ];
       auto-optimise-store = true;
       builders-use-substitutes = true;
+      fallback = true;
+      connect-timeout = 5;
+      stalled-download-timeout = 20;
+      download-attempts = 2;
       substituters = [
         "https://cache.nixos.org"
         "https://nix-community.cachix.org"
