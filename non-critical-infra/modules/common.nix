@@ -139,6 +139,7 @@ in
       AllowUsers = [
         "root"
         "gaetan"
+        "jamie"
         "liberodark"
         "nix"
       ];

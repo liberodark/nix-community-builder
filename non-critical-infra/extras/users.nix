@@ -6,6 +6,7 @@
 
     groups = {
       gaetan = { };
+      jamie = { };
       liberodark = { };
       nix = { };
     };
@@ -13,6 +14,7 @@
     users =
       let
         sshGaetan = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJfOUACs5oAn4Hyt6uMM5e/Xux0/5ODvSeg5zOy4MY1b gaetan@glepage.com";
+        sshJamie = "sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIGAcZNQTgVUK/JRWww3WS+utcsuwHpTcOVSBvqWC/rQZAAAABHNzaDo= jamie.magee@gmail.com";
         sshLiberodark = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGQ5hBVVKK72ZX+n+BVnPocx+AG5u6ht8bM++G1lhufp liberodark@gmail.com";
       in
       {
@@ -30,6 +32,19 @@
           hashedPassword = "$y$j9T$DcNh44UsDFjthtH7vjQE9/$Nk4ey9oblVpiFwT0zWVgkZdh/WAmR1Kuqz58HwnbBj2";
           openssh.authorizedKeys.keys = [
             sshGaetan
+          ];
+        };
+
+        jamie = {
+          isNormalUser = true;
+          group = "jamie";
+          extraGroups = [
+            "wheel"
+          ];
+          shell = config.programs.fish.package;
+          hashedPassword = "$y$j9T$QF7FIOV/CjU68G02pZvH0.$lk67kBcsLULlZ14bkiU2Cyz9tK2cxEal5eaW7kFa4U2";
+          openssh.authorizedKeys.keys = [
+            sshJamie
           ];
         };
 
