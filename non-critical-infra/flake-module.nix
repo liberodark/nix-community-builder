@@ -57,7 +57,7 @@
       darwinConfigurations =
         let
           configs = builtins.mapAttrs (
-            name: value:
+            _name: value:
             inputs.nix-darwin.lib.darwinSystem {
               system = "aarch64-darwin";
               specialArgs = {

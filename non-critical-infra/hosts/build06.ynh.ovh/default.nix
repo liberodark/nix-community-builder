@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }:
+{ lib, ... }:
 
 {
   imports = [
@@ -42,7 +42,7 @@
   nixpkgs.overlays = [
     # Workaround for ffmpeg-headless
     # Remove after merge https://nixtracker.ynh.ovh/pr/525606
-    (final: prev: {
+    (_final: prev: {
       ffmpeg-headless = prev.ffmpeg-headless.overrideAttrs (_: {
         doCheck = false;
       });

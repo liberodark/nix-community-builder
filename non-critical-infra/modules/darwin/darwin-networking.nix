@@ -44,7 +44,7 @@ let
   };
 
   networkOptions =
-    { name, ... }:
+    { ... }:
     {
       options = {
         enable = lib.mkOption {
@@ -329,7 +329,7 @@ let
       '';
     };
 
-  enabledNetworks = lib.filterAttrs (n: v: v.enable) cfg.networks;
+  enabledNetworks = lib.filterAttrs (_n: v: v.enable) cfg.networks;
   scripts = lib.mapAttrsToList mkNetworkScript enabledNetworks;
   fullScript = lib.concatMapStrings (s: s.full) scripts;
   routesOnlyScript = lib.concatMapStrings (s: s.routesOnly) scripts;
