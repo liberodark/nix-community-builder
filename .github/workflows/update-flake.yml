@@ -18,6 +18,9 @@ jobs:
       - name: Update flake
         run: nix flake update
 
+      - name: Remove dead Nix code
+        run: nix run nixpkgs#deadnix -- --edit .
+
       - name: Format Nix files with nixfmt-tree
         run: nix run nixpkgs#nixfmt-tree -- .
 
@@ -29,4 +32,4 @@ jobs:
           add: |
             flake.lock
             **/*.nix
-          message: "chore: Update flake.lock and format nix files"
+          message: "chore: Update flake.lock, remove dead code and format nix files"
