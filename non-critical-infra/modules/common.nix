@@ -141,6 +141,9 @@ in
         "gaetan"
         "liberodark"
         "nix"
+      ]
+      ++ lib.optionals pkgs.stdenv.hostPlatform.isRiscV64 [
+        "jamie"
       ];
       PasswordAuthentication = false;
       KbdInteractiveAuthentication = false;
