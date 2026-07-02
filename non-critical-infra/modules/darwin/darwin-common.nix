@@ -32,6 +32,10 @@
     };
   };
 
+  # Auto Restart
+  power.restartAfterPowerFailure = true;
+  power.restartAfterFreeze = true;
+
   # Fish shell
   programs.fish.enable = true;
 
