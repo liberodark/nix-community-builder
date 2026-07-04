@@ -25,14 +25,6 @@
     max-jobs = 6;
   };
 
-  nix.gc = lib.mkForce {
-    interval = {
-      Hour = 2;
-      Minute = 0;
-    };
-    options = "--delete-older-than 2d";
-  };
-
   darwin.network.networks."10-uplink" = {
     enable = true;
     matchConfig.MACAddress = "d0:11:e5:04:5a:e3";
