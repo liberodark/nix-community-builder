@@ -21,6 +21,20 @@
     configurationLimit = 3;
   };
 
+  disko.devices = import ./disko.nix;
+  boot.supportedFilesystems = [ "zfs" ];
+
+  boot.kernelPatches = [
+    {
+      name = "disable-btf-riscv";
+      patch = null;
+      structuredExtraConfig = with lib.kernel; {
+        DEBUG_INFO_BTF = lib.mkForce no;
+        DEBUG_INFO_BTF_MODULES = lib.mkForce no;
+      };
+    }
+  ];
+
   hardware.spacemit.hmp = {
     enable = true;
     mode = "strict";
@@ -41,14 +55,14 @@
   networking = {
     useNetworkd = true;
     useDHCP = false;
-    hostName = "build07";
+    hostName = "build08";
     domain = "ynh.ovh";
-    hostId = "007cf0c5"; # head -c4 /dev/urandom | od -A none -t x4 | sed 's/ //'
+    hostId = "960c35b1"; # head -c4 /dev/urandom | od -A none -t x4 | sed 's/ //'
   };
 
   systemd.network.networks."10-uplink" = {
     enable = true;
-    matchConfig.MACAddress = "50:0a:52:0b:e6:8b";
+    matchConfig.MACAddress = "fe:fe:fe:ba:7e:85";
     address = [
       "91.224.148.30/32"
     ];
