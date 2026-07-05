@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ ... }:
 
 {
   imports = [
@@ -20,21 +20,6 @@
     enable = true;
     configurationLimit = 3;
   };
-
-  hardware.spacemit.hmp = {
-    enable = true;
-    mode = "strict";
-  };
-
-  nixpkgs.overlays = [
-    # Workaround for ffmpeg-headless
-    # Remove after merge https://nixtracker.ynh.ovh/pr/525606
-    (_final: prev: {
-      ffmpeg-headless = prev.ffmpeg-headless.overrideAttrs (_: {
-        doCheck = false;
-      });
-    })
-  ];
 
   deployment.targetHost = "91.224.148.30";
 
