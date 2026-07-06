@@ -21,33 +21,7 @@
     configurationLimit = 3;
   };
 
-  boot.kernelPatches = [
-    {
-      name = "disable-btf-riscv";
-      patch = null;
-      structuredExtraConfig = with lib.kernel; {
-        DEBUG_INFO_BTF = lib.mkForce no;
-        DEBUG_INFO_BTF_MODULES = lib.mkForce no;
-      };
-    }
-  ];
-
-  hardware.spacemit.hmp = {
-    enable = true;
-    mode = "strict";
-  };
-
   nix.gc.options = lib.mkForce "--delete-older-than 180d";
-
-  nixpkgs.overlays = [
-    # Workaround for ffmpeg-headless
-    # Remove after merge https://nixtracker.ynh.ovh/pr/525606
-    (_final: prev: {
-      ffmpeg-headless = prev.ffmpeg-headless.overrideAttrs (_: {
-        doCheck = false;
-      });
-    })
-  ];
 
   deployment.targetHost = "91.224.148.87";
 
