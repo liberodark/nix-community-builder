@@ -25,6 +25,11 @@ let
       publicKey = "build06.ynh.ovh:bPg6x17ztNd3uMxdclDvdJpTl2pwLiTdHTt9ymTNoMU=";
       systems = [ "riscv64-linux" ];
     };
+    build07 = {
+      url = "https://build07.ynh.ovh";
+      publicKey = "build07.ynh.ovh:+FpUDKUYk4H9uzLgtbE0MHOx+5Nm7YEFBrJJGiQ9O8U=";
+      systems = [ "riscv64-linux" ];
+    };
   };
 
   sharedSystem = "riscv64-linux";
