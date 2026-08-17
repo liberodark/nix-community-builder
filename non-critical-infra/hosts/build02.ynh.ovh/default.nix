@@ -1,4 +1,4 @@
-{ ... }:
+{ lib, ... }:
 
 {
   imports = [
@@ -17,6 +17,8 @@
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
+
+  nix.gc.options = lib.mkForce "--delete-older-than 180d";
 
   deployment.targetHost = "91.224.148.57";
 
