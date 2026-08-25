@@ -606,11 +606,11 @@
         "treefmt-nix": "treefmt-nix_2"
       },
       "locked": {
-        "lastModified": 1786682286,
-        "narHash": "sha256-Zi+TH55wLUCKm5rr9fclssploMYhutvOkbiF6tXFhDg=",
+        "lastModified": 1787319267,
+        "narHash": "sha256-hn3FpGRfvmEW5uAqYkybpIqNwioBwfqvWcAtR0rQPac=",
         "owner": "NixOS",
         "repo": "infra",
-        "rev": "eaf8162389d6f8f9ddc252387785ab10818069f0",
+        "rev": "f518b8de263bc80706d36c9b9e1353413791f73a",
         "type": "github"
       },
       "original": {
