@@ -5,7 +5,7 @@
   ...
 }:
 let
-  enabledHosts = [ "build06" ];
+  enabledHosts = [ ];
   shouldEnable = lib.elem config.networking.hostName enabledHosts;
   riscvPkgs = import (builtins.fetchTarball {
     url = "https://github.com/liberodark/nixpkgs/archive/2f5c7bd5a67a113c86ed5ba1d846a18682a7a970.tar.gz";
