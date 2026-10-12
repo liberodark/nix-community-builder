@@ -40,6 +40,10 @@ let
 in
 {
   # Global Options
+  boot.kernel.sysctl = lib.mkIf (lib.versionAtLeast config.boot.kernelPackages.kernel.version "7.3") {
+    "crypto.af_alg_restrict" = 0;
+  };
+
   boot.zfs.forceImportRoot = false;
 
   boot.binfmt.emulatedSystems = lib.optionals (!pkgs.stdenv.hostPlatform.isRiscV64) (
