@@ -1083,11 +1083,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1790955057,
-        "narHash": "sha256-7lFh9UL7LQCoSBWq4Dk/AjcbrXxwUr/dCGA34BYLGZs=",
+        "lastModified": 1792016253,
+        "narHash": "sha256-QcjDxSf2rAEhCt3lAKq9sJlL5v+KYSnZeIQHiwJ85Ow=",
         "owner": "liberodark",
         "repo": "nom-rs",
-        "rev": "87b249c84d1faadc5826829adb81dda8af4e06cc",
+        "rev": "340ccc4a43056fdcd1c37f5ac94148da5e68e3a1",
         "type": "github"
       },
       "original": {
