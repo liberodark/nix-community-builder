@@ -40,8 +40,10 @@ let
 in
 {
   # Global Options
-  boot.kernelModules = lib.mkIf (lib.versionAtLeast config.boot.kernelPackages.kernel.version "7.3") [ "af_alg" ];
-  
+  boot.kernelModules = lib.mkIf (lib.versionAtLeast config.boot.kernelPackages.kernel.version "7.3") [
+    "af_alg"
+  ];
+
   boot.kernel.sysctl = lib.mkIf (lib.versionAtLeast config.boot.kernelPackages.kernel.version "7.3") {
     "crypto.af_alg_restrict" = 0;
   };
@@ -54,6 +56,13 @@ in
       "riscv64-linux"
     ]
   );
+
+  nixpkgs.overlays = [
+    (final: prev: {
+      # https://github.com/NixOS/nixpkgs/pull/582069
+      tzdata = prev.tzdata.overrideAttrs { doCheck = false; };
+    })
+  ];
 
   nix = {
     settings = {
