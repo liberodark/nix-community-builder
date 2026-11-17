@@ -57,19 +57,6 @@ in
     ]
   );
 
-  nixpkgs.overlays = [
-    (_final: prev: {
-      # https://github.com/NixOS/nixpkgs/pull/582730
-      tzdata = prev.tzdata.overrideAttrs (old: {
-        preCheck = (old.preCheck or "") + ''
-          release_timestamp=$(awk '/^Release /{print $4, $5, $6; exit}' NEWS)
-          release_time_t=$(date -d"$release_timestamp" +%s)
-          checkFlagsArray+=("CHECK_NOW_TIMESTAMP=$release_time_t")
-        '';
-      });
-    })
-  ];
-
   nix = {
     settings = {
       trusted-users = [
