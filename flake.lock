@@ -915,17 +915,17 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1793602796,
-        "narHash": "sha256-QzlpXC68NDgUcTX/VD4//Erpauj8bvqyOMUs7kB/E4c=",
+        "lastModified": 1794804502,
+        "narHash": "sha256-oaR28DvyzYppJj/ARoiUpMuhTZGvA5xiCGbaRhK2F6s=",
         "owner": "liberodark",
         "repo": "nixos-hardware",
-        "rev": "510c8f1d8ad413107ce8e9bf45b3042c23bec742",
+        "rev": "4c6900a8185e077f47d44bc2ddc00a94c3045c5b",
         "type": "github"
       },
       "original": {
         "owner": "liberodark",
         "repo": "nixos-hardware",
-        "rev": "510c8f1d8ad413107ce8e9bf45b3042c23bec742",
+        "rev": "4c6900a8185e077f47d44bc2ddc00a94c3045c5b",
         "type": "github"
       }
     },
